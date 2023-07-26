@@ -209,12 +209,12 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
     children: []
   });
   var currentParent = root;
-  // debugger;
+
   while ((match = re_tag.exec(htmlstr))) {
     currentIndex = match.index;
     try {
-      // debugger;
-      //子表格无法嵌套的问题 AnselK re_tag正则匹配有些问题 步骤一match[3]!=='table'
+
+      //todo 子表格无法嵌套的问题 AnselK re_tag正则匹配有些问题 步骤一match[3]!=='table'
       if (currentIndex > nextIndex && match[3]!=='table') {
         //text node
         text(currentParent, htmlstr.slice(nextIndex, currentIndex));

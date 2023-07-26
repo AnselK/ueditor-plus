@@ -22,7 +22,11 @@
 
   UE.commands["inserttable"] = {
     queryCommandState: function() {
-      return getTableItemsByRange(this).table ? -1 : 0;
+      /**
+       * @AnselK 禁用插入表格关键判断
+       */
+      var table_item = getTableItemsByRange(this)
+      return table_item.table && table_item.cell.nodeName !=='TD'      ? -1 : 0;
     },
     execCommand: function(cmd, opt) {
       function createTable(opt, tdWidth) {
@@ -46,7 +50,8 @@
           }
           html.push("</tr>");
         }
-        //禁止指定table-width
+        
+        //禁止指定table-width --@AnselK 
         return "<table><tbody>" + html.join("") + "</tbody></table>";
       }
 
