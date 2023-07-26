@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模板使用</title>
+    <style>
+        .demo1_config{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #00000040;
+        }
+        .modal_input{
+            width: 400px;
+            height: auto;
+            padding: 20px;
+            background-color:#ffffff;
+            display: flex;
+            justify-content: space-around;
+        }
+        .modal_input button{
+            padding: 8px 18px;
+            background-color: #2644A3;
+            cursor: pointer;
+            color: #fff;
+            border-color: #2644A3;
+            border-radius: 4px;
+        }
+    </style>
+  </head>
+  <body>
+    <form onchange="handle_change(event)" onclick="evect_proxy(event)">
+        <div id="container" style="width:784px;margin: 0 auto;">
+
+        </div>
+    </form>
+    <div id="demo1_config"></div>
+    
+    <button onclick="show_detail(event)" name="查看详情">查看详情</button>
+    <script>
+            var demo_checkBox = `<div id='${new Date().getTime()}' name='checkbox_group'>
+                <input name='radio_group_child' type='radio'></input>
+                </div>`
+            var container
+            var model_data = []
+            window.onload = ()=>{
+                container = document.querySelector('#container')
+                model_data = JSON.parse(localStorage.getItem('model_data')) || []
+                const content = localStorage.getItem('model_html')
+                container.innerHTML = content
+            }
+
+            function radio_click(e){
+                e.stopPropagation();
+            }
+
+            function radio_change(e){
+
+                console.log('radio_change');
+            }
+            
+            async function outerEvent(){
+                let val
+                await new Promise((resolve, reject) => {
+                    const modal = document.createElement('div')
+                    modal.className = 'demo1_config'
+                    const div = document.createElement('div')
+                    div.className = 'modal_input'
+                    const input = document.createElement('input')
+                    input.type = 'text'
+                    const button = document.createElement('button')
+                    button.innerText = "确认"
+                    const con = document.querySelector('#demo1_config')
+                    button.onclick = (e)=>{
+                        val = input.value
+                        con.removeChild(modal)
+                        resolve()
+                    }
+                    div.appendChild(input)
+                    div.appendChild(button)
+                    modal.appendChild(div)
+                    con.appendChild(modal)
+                    
+                })
+                return val
+            }
+            var event
+            async function evect_proxy(e){
+                if(e.target.name=="radio_group_child"){
+                    return
+                }
+                
+                const id = e.target.getAttribute('id')
+                if(!id)return;
+                event = id
+                
+                const { events } = model_data.find(item=>item.id==id) || {}
+                if(events.outerEvent && events.outerEvent.open){
+                    const item_id = events.outerEvent.id
+                    const item = model_data.find(item=>item.id==item_id) || {}
+                    e.target.value = (item.value * 1 + 100) * 3
+                    e.target.innerText = (item.value * 1 + 100) * 3
+                    return
+                }
+                const val = await outerEvent()
+                e.target.value = val
+                e.target.innerText = e.target.value
+                const create_event = document.createEvent('Event')
+                create_event.initEvent('change', true, false);
+                e.target.dispatchEvent(create_event)
+            }
+
+            function handle_change(e){
+                console.log('handle_change');
+                if(e.target.name=='radio_group_child'){
+                    handle_radio_child(e)
+                    return
+                }
+                
+                const id = e.target.getAttribute('id')
+                if(!id)return;
+                if(event==id){
+                    const { events } = model_data.find(item=>item.id==id) || {}
+                    if(events && events.relationEvent && events.relationEvent.open){
+                        const item_id = events.relationEvent.id
+                        const item = model_data.find(item=>item.id==item_id) || {}
+                        const dom = document.getElementById(item_id)
+                        if(dom){
+                            const vals = e.target.value*1 + 8
+                            dom.value = vals
+                            dom.innerText = vals
+                            item.value = vals
+                            
+                        }
+                    }
+                    return
+                }
+                e.target.innerText = e.target.value
+            }
+
+            function show_detail(){
+                localStorage.setItem('detail_html',container.innerHTML)
+                window.open('show_detail.html')
+            }
+
+            function handle_radio_child(e){
+                const target = e.target
+                e.target.setAttribute('checked',true)
+                const parent = target.parentNode
+                const parent_id = parent.getAttribute('id')
+                const radios = parent.children
+                for (let index = 0; index < radios.length; index++) {
+                    if(target!==radios[index]){
+                        radios[index].checked = !target.checked
+                        radios[index].setAttribute('checked',!target.checked)
+                    }
+                }
+            }
+
+    </script>
+  </body>
+</html>

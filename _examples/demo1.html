@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo1</title>
+    <style>
+        .demo1_config{
+            width: 200px;
+            height: 100vh;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo1_config" id="demo1_config">
+        <div>
+            <input type="checkbox" id="event_btn" >事件</input>
+            <input type="checkbox" id="event_btn_outer" >影响事件</input>
+            <input type="checkbox" id="event_btn_rekation" >关联事件</input>
+            <button onclick="confirm_node_config(event)">确认</button>
+            
+        </div>
+    </div>
+    <button onclick="confirm_config(event)">确认配置</button>
+    <p>
+        <div>
+            <div id="container" onclick="handle_click(event)" style="width:784px;margin: 0 auto;">
+    
+            </div>
+        </div>
+    </p>
+    <script>
+        var current = {}
+        var container
+        var configs = []
+        var event_btn_rekation = ''
+        var event_btn_outer = ''
+        window.onload = ()=>{
+            const content = localStorage.getItem('demo1')
+            
+            configs = JSON.parse(localStorage.getItem('demo1_config')) || []
+            const div = document.createElement('div')
+            const style = localStorage.getItem('demo1_style')
+            const s = document.createElement('style')
+            s.innerHTML = style
+            div.innerHTML = content
+            container = document.querySelector('#container')
+            container.appendChild(div)
+            document.head.appendChild(s)
+        }
+
+        function confirm_node_config(){
+            const input = document.querySelector('#event_btn')
+            const input2 = document.querySelector('#event_btn_rekation')
+            const input3 = document.querySelector('#event_btn_outer')
+            const relationEvent = input2.checked?{
+                        open:input2.checked,
+                        id:event_btn_rekation
+                    } : null
+            const outerEvent = input3.checked?{
+                        open:input3.checked,
+                        id:event_btn_outer
+                    }:null
+            const events = {
+                    event:input.checked,
+                    relationEvent,
+                    outerEvent
+                
+            }
+            const curr = configs.find(item=>item.id==current.id)
+            curr['events'] = events
+            document.querySelector('#demo1_config').style.opacity = '0'
+        }
+        
+        function confirm_config(){
+            const content = document.querySelector('#container').innerHTML
+            localStorage.setItem('model_data',JSON.stringify(configs))
+            localStorage.setItem('model_html',content)
+            window.open('use_tem.html')
+        }
+        function handle_click(e){
+            
+            const id = e.target.getAttribute('id')
+            if(!id)return;
+            if(e.target==document.querySelector('#container'))return
+            const i = configs.findIndex(item=>item.id==id)
+            console.log(configs,i);
+            configs[i+1] && (event_btn_rekation = configs[i+1].id)
+            configs[i-1] && (event_btn_outer = configs[i-1].id)
+            current['id'] = id
+            document.querySelector('#demo1_config').style.opacity = '1'
+        }
+    </script>
+</body>
+</html>

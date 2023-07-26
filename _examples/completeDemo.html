@@ -28,68 +28,90 @@
 </head>
 <body class="demo-editor-page">
 <div>
+  <!--       
+  <h1>
+      你好 UEditorPlus
+  </h1>
+  <p>
+      UEditorPlus 是基于 UEditor 二次开发的富文本编辑器，让 UEditor <span style="color: #E36C09;">焕<span style="color: #0070C0;">然</span><span style="color: #31859B;"><span style="color: #00B050;">一</span><span style="color: #FF0000;">新</span></span></span>
+  </p>
+   <pre class="brush:html;toolbar:false">&lt;div&gt;
+    &lt;span&gt;这里是HTML标签&lt;/span&gt;
+  &lt;/div&gt;</pre>
+  <h2>
+  公式支持
+  </h2>
+  <p>
+      <img src="https://latex.codecogs.com/svg.image?f(a)%20%3D%20%5Cfrac%7B1%7D%7B2%5Cpi%20i%7D%20%5Coint%5Cfrac%7Bf(z)%7D%7Bz-a%7Ddz" data-formula-image="f(a)%20%3D%20%5Cfrac%7B1%7D%7B2%5Cpi%20i%7D%20%5Coint%5Cfrac%7Bf(z)%7D%7Bz-a%7Ddz"/>
+  </p>
+  <p>
+      <br/>
+  </p>
+  <tr>
+              <td width="273" valign="top" style="word-break: break-all;">
+                  如果
+              </td>
+              <td width="273" valign="top" style="word-break: break-all;">
+                  有一天
+              </td>
+              <td width="273" valign="top" style="word-break: break-all;">
+                  我离开了
+              </td>
+          </tr>
+          <tr>
+              <td valign="top" colspan="1" rowspan="1" style="word-break: break-all;">
+                  怎么才能
+              </td>
+              <td valign="top" colspan="1" rowspan="1" style="word-break: break-all;">
+                  证明我
+              </td>
+              <td valign="top" colspan="1" rowspan="1" style="word-break: break-all;">
+                  曾经来过
+              </td>
+          </tr>
+          <table id='child_table' data-sort="sortDisabled">
+                    <tbody>
+                      <tr class="firstRowChild" >
+                        <td valign="top" style="word-break: break-all;" rowspan="1" colspan="3">我是子表格</td>
+                      </tr>  
+                    </tbody
+                  </table>
+                  <table data-sort="sortDisabled">
+      <tbody>
+          <tr class="firstRow">
+              <td valign="top" style="word-break: break-all;" rowspan="1" colspan="3">
+                  我是表格
+                  <table data-sort="sortDisabled">
+                    <tbody>
+                        <tr class="firstRow">
+                            <td valign="top" style="word-break: break-all;" rowspan="1" colspan="3">
+                                子我是表格
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+   -->
   <h1>完整示例</h1>
-  <div>
-    <script id="editor" type="text/plain" style="height:300px;">
-<h1>
-    你好 UEditorPlus
-</h1>
-<p>
-    UEditorPlus 是基于 UEditor 二次开发的富文本编辑器，让 UEditor <span style="color: #E36C09;">焕<span style="color: #0070C0;">然</span><span style="color: #31859B;"><span style="color: #00B050;">一</span><span style="color: #FF0000;">新</span></span></span>
-</p>
+  <form id="cdemo1p" readonly onchange="click_demo1(event)" >
+    <div id="cdemo1" onclick="click_demo1(event)">
+      <script id="editor" type="text/plain" style="height:300px;">
+       
+  
 
-<table data-sort="sortDisabled">
-    <tbody>
-        <tr class="firstRow">
-            <td valign="top" style="word-break: break-all;" rowspan="1" colspan="3">
-                我是表格
-            </td>
-        </tr>
-        <tr>
-            <td width="273" valign="top" style="word-break: break-all;">
-                如果
-            </td>
-            <td width="273" valign="top" style="word-break: break-all;">
-                有一天
-            </td>
-            <td width="273" valign="top" style="word-break: break-all;">
-                我离开了
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" colspan="1" rowspan="1" style="word-break: break-all;">
-                怎么才能
-            </td>
-            <td valign="top" colspan="1" rowspan="1" style="word-break: break-all;">
-                证明我
-            </td>
-            <td valign="top" colspan="1" rowspan="1" style="word-break: break-all;">
-                曾经来过
-            </td>
-        </tr>
-    </tbody>
-</table>
-<pre class="brush:html;toolbar:false">&lt;div&gt;
-  &lt;span&gt;这里是HTML标签&lt;/span&gt;
-&lt;/div&gt;</pre>
-<h2>
-公式支持
-</h2>
-<p>
-    <img src="https://latex.codecogs.com/svg.image?f(a)%20%3D%20%5Cfrac%7B1%7D%7B2%5Cpi%20i%7D%20%5Coint%5Cfrac%7Bf(z)%7D%7Bz-a%7Ddz" data-formula-image="f(a)%20%3D%20%5Cfrac%7B1%7D%7B2%5Cpi%20i%7D%20%5Coint%5Cfrac%7Bf(z)%7D%7Bz-a%7Ddz"/>
-</p>
-<p>
-    <br/>
-</p>
-    </script>
-  </div>
+      </script>
+    </div>
+  </form>
+  
   <div id="btns" style="margin-top:20px;">
     <div>
-
-      <button onclick="alert(UE.getEditor('editor').getAllHtml())">获得整个html的内容</button>
-      <button onclick="alert(UE.getEditor('editor').getContent())">获得内容</button>
-      <button onclick="UE.getEditor('editor').setContent('<p>欢迎使用 UEditorPlus</p>', false)">写入内容</button>
-      <button onclick="UE.getEditor('editor').setContent('<p>欢迎使用 UEditorPlus</p>', true)">追加内容</button>
+      <button onclick="console.log(UE.getEditor('editor').getAllHtml())">获得整个html的内容</button>
+      <button onclick="confirmContent()">获得内容</button>
+      <button onclick="UE.getEditor('editor').setContent(content, false)">写入内容</button>
       <button onclick="alert(UE.getEditor('editor').getContentTxt())">获得纯文本</button>
       <button onclick="alert(UE.getEditor('editor').getPlainTxt())">获得带格式的纯文本</button>
       <button onclick="alert(UE.getEditor('editor').hasContents())">判断是否有内容</button>
@@ -97,7 +119,8 @@
       <button onmousedown="isFocus()">编辑器是否获得焦点</button>
       <button onmousedown="setBlur()">编辑器失去焦点</button>
       <button onclick="getSelectText()">获得当前选中的文本</button>
-      <button onclick="UE.getEditor('editor').execCommand('insertHtml', '插入的内容')">插入内容</button>
+      <button onclick="insertHtmlInputNode()">插入输入框</button>
+      <button onclick="insertHtmlRaioNode()">插入单选框</button>
       <button onclick="UE.getEditor('editor').setEnabled()">设定可编辑</button>
       <button onclick="UE.getEditor('editor').setDisabled('fullscreen')">设定不可编辑</button>
       <button onclick="UE.getEditor('editor').setHide()">隐藏编辑器</button>
@@ -113,7 +136,183 @@
   </div>
 
   <script type="text/javascript">
+
+    var ids = []
+    var page_break = `_ueditor_page_break_tag_`
+    var table1 = `<table><tbody><tr><td>dsafsaf</td></tr></tbody></table></table>`
+    
+    var area1 = `<input id='${new Date().getTime()}' type='checkbox'></input>`
+    
+    var content = `
+    <style>
+    /*paged media */ 
+    div.header {display: none }div.footer {display: none } 
+    /*@media print { */
+      div.header {display: block; position: running(header) }
+      div.footer {display: block; position: running(footer) }
+      @page { size: A4; margin: 10%; 
+        @top-center {content: element(header) } 
+        @bottom-center {content: element(footer) } }
+        /*element styles*/ 
+        .del  {text-decoration:line-through;color:red;} 
+        .ins {text-decoration:none;background:#c0ffc0;padding:1px;}
+        /* TABLE STYLES */ 
+        table.a2 {display:table;position: relative; margin-left: 0in;}
+
+        /* PARAGRAPH STYLES */ 
+      .DocDefaults {display:block;margin-top: 0in;margin-bottom: 0in;line-height: 100%;font-size: 10.0pt;}
+      .a {display:block;text-align: justify;font-size: 10.5pt;}
+
+ /* CHARACTER STYLES */ 
+ span.a1 {display:inline;}
+    </style>
+  <!-- userBodyTop goes here -->
+  
+  <div class="header">
+  
+  <table id="docx4j_tbl_0" style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;position: relative; margin-left: -2mm;table-layout: fixed;vertical-align: top;border-collapse: collapse;width: 100%;"><colgroup><col style="width: 17.82%;" /><col style="width: 20.56%;" /><col style="width: 19.18%;" /><col style="width: 19.18%;" /><col style="width: 23.26%;" /></colgroup><tbody><tr style="height: 8mm;"><td rowspan="5" style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;">
+  
+  <p class="a DocDefaults " style="text-align: center;"><span class="a1 " style=""><img height="87" id="rId1" src="1eb04c47-a408-4303-bedf-b9c73febaf3dimage1.jpeg" width="77" /></span></p></td><td colspan="4" style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="text-align: center;"><span class="a1 " style="font-size: 14.0pt;"><span>人凝血因子Ⅷ包装原始记录</span></span></p></td></tr><tr style="height: 4mm;"><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">记录编码：RC-PM- Ⅷ(BZ)-001</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">版本号：03</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">页码：</span></span><span class="" style="font-size: 12.0pt;">1</span><span class="a1 " style="font-size: 12.0pt;;white-space:pre-wrap;"> </span><span class="a1 " style="font-size: 12.0pt;">of</span><span class="a1 " style="font-size: 12.0pt;;white-space:pre-wrap;"> </span><span class="" style="font-size: 12.0pt;">1</span></p></td></tr><tr style="height: 4mm;"><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">规格：200IU/瓶</span></span></p></td><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">批号：</span></span></p></td></tr><tr style="height: 4mm;"><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">起草人：</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">审核人：</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">批准人：</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">批准人：</span></span></p></td></tr><tr style="height: 0.26in;"><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">日期：</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">日期：</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">日期：</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.53mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.53mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.53mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.53mm;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style="font-size: 12.0pt;"><span class="" style="">日期：</span></span></p></td></tr></tbody></table>
+  
+  <p class="a DocDefaults "> </p></div>
+  
+  <div class="document">
+  
+  <p class="1 a DocDefaults " style="position: relative; margin-left: 25mm;text-indent: -25mm;line-height: 175%;"><a name="_Toc459039631" /><a name="_Toc70425392" /><a name="_Toc29305233" /><a name="_Toc47447354" /><a name="_Toc29368079" /><span class="a1 " style="font-weight: bold;"><span class="" style="font-family: 'SimSun';">13.工序：制品入库、灯检</span></span><span class="a1 " style="font-weight: bold;;font-family: 'SimSun';white-space:pre-wrap;">             </span></p>
+  
+  <table id="docx4j_tbl_2" style="border-bottom-style: solid;border-bottom-width: 0.26mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.26mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.26mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.26mm;border-top-color: #000000;table-layout: fixed;vertical-align: top;border-collapse: collapse;width: 175mm;"><colgroup><col style="width: 30%;" /><col style="width: 70%;" /></colgroup><tbody><tr style="height: 0.31in;page-break-inside: avoid;"><td style="border-bottom-style: solid;border-bottom-width: 0.26mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.26mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.26mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.26mm;border-top-color: #000000;padding-left: 0.49mm;padding-right: 0.49mm;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="line-height: 166%;vertical-align: bottom;"><span class="a1 " style="font-weight: bold;font-size: 14.0pt;"><span class="" style="font-family: 'SimSun';">生产指令:</span></span></p></td><td style="border-bottom-style: solid;border-bottom-width: 0.26mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.26mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.26mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.26mm;border-top-color: #000000;padding-left: 0.49mm;padding-right: 0.49mm;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="line-height: 166%;vertical-align: bottom;"><span class="a1 " style="font-weight: bold;font-size: 14.0pt;"><span class="" style="font-family: 'SimSun';">记录:</span></span></p></td></tr><tr style="height: 184mm;"><td style="border-bottom-style: solid;border-bottom-width: 0.26mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.26mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.26mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.26mm;border-top-color: #000000;padding-left: 0.49mm;padding-right: 0.49mm;">
+  
+  <p class="a DocDefaults " style="line-height: 158%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">7. 现场检查：</span></span></p>
+  
+  <p class="a DocDefaults " style="line-height: 158%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">检查前次清场情况，确保现场没有上道工序或上批遗留物。检查车间是否已清洁、设备是否已清洁。</span></span></p>
+  
+  <p class="a DocDefaults " style="line-height: 158%;vertical-align: bottom;"> </p>
+  
+  <p class="a DocDefaults " style="line-height: 158%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">8.第二次灯检前先确认灯检仪的照度；若不在要求范围要调整至要求范围内。</span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; margin-left: 0.07in;margin-top: 0.11in;line-height: 166%;vertical-align: bottom;"> </p>
+  
+  <p class="a DocDefaults " style="margin-top: 0.11in;line-height: 166%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">9. 第二次灯检：灯检时逐瓶检查，检查装量、纤毛、玻屑、白点、黑点等外观有异常的制品要剔出，集中存放在不合格品库。</span></span></p>
+  
+  <p class="a DocDefaults " style="line-height: 200%;vertical-align: bottom;"> </p>
+  
+  <p class="a DocDefaults " style="position: relative; margin-left: 0.07in;margin-top: 0.11in;line-height: 166%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';white-space:pre-wrap;">10. </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">清场：</span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; margin-left: 0.07in;margin-top: 0.11in;line-height: 166%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">灯检结束后及时清洁操作间的卫生。</span></p>
+  
+  <p class="a DocDefaults " style="line-height: 200%;vertical-align: bottom;"> </p>
+  
+  <p class="a DocDefaults " style="position: relative; margin-left: 0.07in;margin-top: 0.11in;line-height: 166%;vertical-align: bottom;"> </p>
+  
+  <p class="a DocDefaults " style="margin-top: 0.11in;line-height: 166%;vertical-align: bottom;"> </p></td><td style="border-bottom-style: solid;border-bottom-width: 0.26mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.26mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.26mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.26mm;border-top-color: #000000;padding-left: 0.49mm;padding-right: 0.49mm;">
+  
+  <p class="a DocDefaults " style="position: relative; margin-left: 0.07in;text-indent: 0.08in;line-height: 25%;vertical-align: bottom;"> </p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 158%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">7. 现场检查：</span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 158%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">现场有无上道工序或上批遗留物？ 有□  无□</span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 158%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;">灯检室是否已清洁？             是□  否□ </span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 158%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">设备是否已清洁？               是□  否□</span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">检查者</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">          </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;"> 复核者</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">           </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">日期</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">       </span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">8.第二次灯检灯检仪照度确认：</span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">灯检仪</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">        </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">台  灯检仪照度范围：</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">               </span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">检查结论：</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                                       </span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">检查者</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">         </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;">   复核者</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">         </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;">  日期</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">         </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';white-space:pre-wrap;"> </span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">9.第二次灯检：</span></span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">品名</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                      </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;"> 批号</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">          </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">规格</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">       </span></p>
+  
+  <p class="a DocDefaults " style="position: relative; margin-left: 0.07in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">灯检数量</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">          </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">瓶  合格</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">       </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">瓶  不合格</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">      </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">瓶</span></p>
+  
+  <p class="a DocDefaults " style="position: relative; text-indent: 0.08in;line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">第二次灯检操作者</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                                               </span></p>
+  
+  <p class="a DocDefaults " style="line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                                                         </span></p>
+  
+  <p class="a DocDefaults " style="line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                                                         </span></p>
+  
+  <p class="a DocDefaults " style="line-height: 175%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                                   </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;">   日期</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">              </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';white-space:pre-wrap;"> </span></p>
+  
+  <p class="a DocDefaults " style="position: relative; margin-left: 0.07in;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';">10. 清场：</span></span></p>
+  
+  <table id="docx4j_tbl_1" style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;table-layout: fixed;vertical-align: top;border-collapse: collapse;width: 100%;"><colgroup><col style="width: 30.32%;" /><col style="width: 69.68%;" /></colgroup><tbody><tr style="height: 7mm;"><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults "><span class="a1 " style=""><span class="" style="font-family: 'SimSun';">清场范围：</span></span></p></td></tr><tr style="height: 7mm;"><td style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="text-align: center;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-family: 'SimSun';">清场项目</span></p></td><td style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="text-align: center;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-family: 'SimSun';">清 场 结 果</span></p></td></tr><tr style="height: 7mm;"><td style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="text-align: center;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-family: 'SimSun';">灯检台</span></p></td><td style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;">
+  
+  <p class="a DocDefaults " style="text-align: center;line-height: 133%;vertical-align: bottom;"> </p></td></tr><tr style="height: 7mm;"><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="margin-top: 0.11in;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">操 作 者</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                                </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;">  日期</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">        </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';white-space:pre-wrap;"> </span></p></td></tr><tr style="height: 7mm;"><td style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="text-align: center;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-family: 'SimSun';">灯检室</span></p></td><td style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;">
+  
+  <p class="a DocDefaults " style="text-align: center;line-height: 133%;vertical-align: bottom;"> </p></td></tr><tr style="height: 0.36in;"><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;vertical-align: middle;">
+  
+  <p class="a DocDefaults " style="margin-top: 0.11in;line-height: 133%;vertical-align: bottom;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">操 作 者</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">                                 </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;"> 日期</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">        </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';white-space:pre-wrap;"> </span></p></td></tr><tr style="height: 13mm;"><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;">
+  
+  <p class="a DocDefaults " style="margin-top: 0.11in;"><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';">结果评价</span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">         </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;">  质监员</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">         </span><span class="a1 " style="font-size: 12.0pt;"><span class="" style="font-family: 'SimSun';white-space:pre-wrap;">  日期</span></span><span class="a1 " style="font-size: 12.0pt;text-decoration: underline;;font-family: 'SimSun';white-space:pre-wrap;">        </span><span class="a1 " style="font-size: 12.0pt;;font-family: 'SimSun';white-space:pre-wrap;"> </span></p></td></tr></tbody></table>
+  
+  <p class="a DocDefaults " style="margin-top: 0.07in;line-height: 33%;vertical-align: bottom;"> </p></td></tr><tr style="height: 20mm;"><td colspan="2" style="border-bottom-style: solid;border-bottom-width: 0.26mm;border-bottom-color: #000000;border-left-style: solid;border-left-width: 0.26mm;border-left-color: #000000;border-right-style: solid;border-right-width: 0.26mm;border-right-color: #000000;border-top-style: solid;border-top-width: 0.26mm;border-top-color: #000000;padding-left: 0.49mm;padding-right: 0.49mm;">
+  
+  <p class="a DocDefaults " style="line-height: 191%;vertical-align: bottom;"><span class="a1 " style="font-weight: bold;font-size: 14.0pt;"><span class="" style="font-family: 'SimSun';">特记事项：</span></span></p>
+  
+  <p class="a DocDefaults " style="text-align: center;line-height: 191%;vertical-align: bottom;"> </p></td></tr></tbody></table>
+  
+  <p class="a DocDefaults " style="line-height: 8%;"> </p>
+  
+  <p class="1 a DocDefaults " style="position: relative; text-indent: 0in;line-height: 175%;"> </p></div>
+  
+  <div class="footnotes">
+  
+  <p class="a DocDefaults "> </p></div>`
     var ue = UE.getEditor('editor');
+    ue.addListener('contentchange', function(type,a){
+      console.log('选区改变',type,a);
+    });
     function isFocus(e) {
       alert(UE.getEditor('editor').isFocus());
       UE.dom.domUtils.preventDefault(e)
@@ -129,6 +328,56 @@
       var txt = UE.getEditor('editor').selection.getText();
       alert(txt)
     }
+    
+    function click_demo1(e){
+      console.log('click_demo1');
+    }
+
+    function insertHtmlInputNode(node){
+      const id = new Date().getTime()
+      
+      const len = ids.length + 1
+      ids.push({
+        id,
+        label:len
+      })
+      var area = `<textarea id='${id}'>${len}</textarea>`
+      UE.getEditor('editor').execCommand('insertHtml',area)
+    }
+
+    function insertHtmlRaioNode(node){
+      const id = new Date().getTime()
+      const len = ids.length + 1
+      ids.push({
+        id,
+        label:len
+      })
+      var radio = `<span name="radio_group" id="${id}">${len}<input type="radio" name="radio_group_child"><input type="radio" name="radio_group_child"></span>`
+      UE.getEditor('editor').execCommand('insertHtml',radio)
+    }
+
+    function confirmContent(){
+
+      const content = UE.getEditor('editor').getContent()
+      console.log(UE.htmlparser(content).toHtml());
+      return
+      localStorage.setItem('demo1_config',JSON.stringify(ids))
+      localStorage.setItem('demo1',content)
+      window.open('demo1.html')
+    }
+    
+    ue.ready(()=>{
+      const target = document.querySelector('#edui1_iframeholder')
+      const config = {attributes:true}
+      const fallback = (mutationsList, observer)=>{
+        console.log(mutationsList, observer,'mutationsList, observer');
+        // 处理提示分界线
+      }
+      const observer = new MutationObserver(fallback)
+      observer.observe(target,config)
+    })
+
+
   </script>
 </div>
 </body>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show_detail</title>
+    <style>
+        @media print{
+            .print{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container" style="width:784px;margin: 0 auto;"></div>
+    <button onclick="printHtml()" class="print">打印</button>
+    <script>
+        window.onload = ()=>{
+            const container = document.querySelector('#container')
+            container.innerHTML = localStorage.getItem('detail_html')
+            
+        }
+        function printHtml(){
+            window.print()
+        }
+    </script>
+</body>
+</html>
