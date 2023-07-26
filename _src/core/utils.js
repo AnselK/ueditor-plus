@@ -51,6 +51,7 @@ var utils = (UE.utils = {
      * ```
      */
   each: function(obj, iterator, context) {
+    
     if (obj == null) return;
     if (obj.length === +obj.length) {
       for (var i = 0, l = obj.length; i < l; i++) {
@@ -565,6 +566,7 @@ var utils = (UE.utils = {
 
   /**
      * 动态加载文件到doc中，加载成功后执行的回调函数fn
+     * @todo AnselK
      * @method loadFile
      * @param { DomDocument } document 需要加载资源文件的文档对象
      * @param { Object } options 加载资源文件的属性集合， 该集合支持的值是script标签和style标签支持的所有属性。
@@ -599,8 +601,8 @@ var utils = (UE.utils = {
         return null;
       }
     }
-
     return function(doc, obj, fn) {
+      
       var item = getItem(doc, obj);
       if (item) {
         if (item.ready) {

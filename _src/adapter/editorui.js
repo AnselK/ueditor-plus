@@ -690,7 +690,8 @@
       editor: editor,
       title: title,
       className: "edui-for-inserttable",
-      onpicktable: function(t, numCols, numRows) {
+      onpicktable: function(t, numCols, numRows) { //AnselK插入表格入口
+        
         editor.execCommand("InsertTable", {
           numRows: numRows,
           numCols: numCols,
@@ -703,6 +704,7 @@
     });
     editorui.buttons["inserttable"] = ui;
     editor.addListener("selectionchange", function() {
+      //@AnselK 禁用表格插入图标调用func
       ui.setDisabled(editor.queryCommandState("inserttable") == -1);
     });
     return ui;

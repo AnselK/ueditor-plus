@@ -28,6 +28,7 @@
 
 UE.commands["inserthtml"] = {
   execCommand: function(command, html, notNeedFilter) {
+    // debugger;
     var me = this,
       range,
       div;
@@ -58,6 +59,7 @@ UE.commands["inserthtml"] = {
       if (domUtils.isFillChar(tmpNode)) {
         range.setStartBefore(tmpNode);
       }
+      
       tmpNode = range.endContainer;
       if (domUtils.isFillChar(tmpNode)) {
         range.setEndAfter(tmpNode);
@@ -105,7 +107,6 @@ UE.commands["inserthtml"] = {
         }
       }
     }
-
     var child,
       parent,
       pre,
@@ -195,7 +196,7 @@ UE.commands["inserthtml"] = {
             parent &&
             parent.tagName.toLowerCase() != "body" &&
             !(
-              dtd[parent.tagName][child.nodeName] && child.parentNode === parent
+              dtd[parent.tagName][child.nodeName] && child.parentNode === parent  // todo AnselK 添加figure标签包裹table组件主要判断条件
             )
           ) {
             if (!dtd[parent.tagName][child.nodeName]) {

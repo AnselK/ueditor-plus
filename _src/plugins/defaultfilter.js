@@ -9,13 +9,17 @@ UE.plugins["defaultfilter"] = function() {
     rgb2Hex: true
   });
   //默认的过滤处理
-  //进入编辑器的内容处理
+  //进入编辑器的内容处理 AnselK 节点处理函数· table问题1
   me.addInputRule(function(root) {
     var allowDivTransToP = this.options.allowDivTransToP;
     var val;
     function tdParent(node) {
+      
       while (node && node.type == "element") {
-        if (node.tagName == "td") {
+        /**
+         * AnselK 处理table嵌套问题 步骤二
+         */
+        if (node.tagName == "td" && !node.children) { 
           return true;
         }
         node = node.parentNode;

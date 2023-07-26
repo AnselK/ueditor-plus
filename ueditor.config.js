@@ -48,7 +48,7 @@
     // 需要能跨域的静态资源请求，主要用户弹窗页面等静态资源
     UEDITOR_CORS_URL: CORS_URL,
 
-    // 服务器统一请求接口路径
+    // 服务器统一请求接口路径 @AnselK 后端路径
     serverUrl: "/ueditor-plus/_demo_server/handle.php",
     // 服务器统一请求头信息，会在所有请求中带上该信息
     serverHeaders: {
@@ -209,6 +209,7 @@
     }
 
     // 公式配置
+    // todo AnselK
     , formulaConfig: {
        // 公式渲染链接模板
        imageUrlTemplate: 'https://latex.codecogs.com/svg.image?{}',

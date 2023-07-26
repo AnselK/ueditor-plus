@@ -2439,6 +2439,7 @@ var CodeMirror = (function() {
         },
         iter: function(from, to, op) { this.iterN(from, to - from, op); },
         iterN: function(at, n, op) {
+           
             for (var i = 0, e = this.children.length; i < e; ++i) {
                 var child = this.children[i], sz = child.chunkSize();
                 if (at < sz) {

@@ -205,6 +205,7 @@ UE.plugins["keystrokes"] = function() {
       rng,
       me = this;
     if (keyCode == keymap.Backspace) {
+
       if (me.fireEvent("delkeyup")) {
         return;
       }

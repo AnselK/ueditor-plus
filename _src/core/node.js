@@ -1,4 +1,8 @@
 /**
+ * @AnselK json转html
+ */
+
+/**
  * 编辑器模拟的节点类
  * @file
  * @module UE
@@ -21,7 +25,8 @@
      */
 
   /**
-     * 通过一个键值对，创建一个uNode对象
+     * 通过一个键值对，创建一个uNode对象 
+     * @AnselK uNode对象
      * @constructor
      * @param { Object } attr 传入要创建的uNode的初始属性
      * @example
@@ -90,6 +95,7 @@
     });
   };
   function nodeToHtml(node, arr, formatter, current) {
+    
     switch (node.type) {
       case "root":
         for (var i = 0, ci; (ci = node.children[i++]); ) {
@@ -218,11 +224,12 @@
   }
 
   function getNodesByTagName(node, tagName, arr) {
+    
     if (node.type == "element" && node.tagName == tagName) {
       arr.push(node);
     }
     if (node.children && node.children.length) {
-      for (var i = 0, ci; (ci = node.children[i++]); ) {
+      for (let i = 0, ci; (ci = node.children[i++]); ) {
         getNodesByTagName(ci, tagName, arr);
       }
     }

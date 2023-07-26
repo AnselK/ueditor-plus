@@ -95,6 +95,9 @@
       this._track(numCols, numRows);
     },
     _onClick: function() {
+      /**
+       * 插入表格按钮事件
+       */
       this.fireEvent("picktable", this.numCols, this.numRows);
     }
   };

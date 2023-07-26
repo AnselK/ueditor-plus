@@ -110,7 +110,9 @@ body {
   background: #FFF;
   padding: 0;
 }
-
+/*
+@AnselK 编辑器宽度设置 
+ */
 .demo-editor-page > div {
   max-width: 800px;
   margin: 20px auto;

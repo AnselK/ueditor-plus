@@ -251,6 +251,7 @@
     if (!utils.isEmptyObject(UE.I18N)) {
       //修改默认的语言类型
       me.options.lang = checkCurLang(UE.I18N);
+      
       UE.plugin.load(me);
       langReadied(me);
     } else {
@@ -468,7 +469,7 @@
                 "'></script>"
             : "") +
           "</html>";
-
+            // todo AnselK 创建iframe编辑框
         container.appendChild(
           domUtils.createElement(document, "iframe", {
             id: "ueditor_" + me.uid,
@@ -507,6 +508,7 @@
 
     /**
          * 编辑器初始化
+         * @todo AnselK
          * @method _setup
          * @private
          * @param { Element } doc 编辑器Iframe中的文档对象
@@ -940,7 +942,9 @@
 
       me.fireEvent("beforesetcontent", html);
       var root = UE.htmlparser(html);
+      
       me.filterInputRule(root);
+     
       html = root.toHtml();
 
       me.body.innerHTML = (isAppendTo ? me.body.innerHTML : "") + html;
@@ -1186,6 +1190,7 @@
       }
       clearTimeout(_selectionChangeTimer);
       _selectionChangeTimer = setTimeout(function() {
+        
         if (!me.selection || !me.selection.getNative()) {
           return;
         }
@@ -1640,7 +1645,8 @@
          * @see UE.Editor:addInputRule
          */
     filterInputRule: function(root) {
-      for (var i = 0, ci; (ci = this.inputRules[i++]); ) {
+     
+      for (let i = 0, ci; (ci = this.inputRules[i++]); ) {
         ci.call(this, root);
       }
     },

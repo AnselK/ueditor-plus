@@ -856,6 +856,7 @@
     });
 
     var oldRender = editor.render;
+    // todo AnselK
     editor.render = function (holder) {
       if (holder.constructor === String) {
         editor.key = holder;

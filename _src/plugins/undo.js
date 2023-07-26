@@ -160,11 +160,13 @@ UE.plugins["undo"] = function() {
       var currentScene = this.getScene(notSetCursor),
         lastScene = this.list[this.index];
       if (!lastScene || ( lastScene && lastScene.content != currentScene.content )) {
+        
         // 使用异步避免直接在事件中取值滞后一个字符
         setTimeout(function(){
           me.trigger("contentchange");
         },0);
       }
+    
       //内容相同位置相同不存
       if (
         lastScene &&
@@ -285,11 +287,14 @@ UE.plugins["undo"] = function() {
         me.undoManger.save(true);
       }
       clearTimeout(saveSceneTimer);
+      
       function save(cont) {
         cont.undoManger.save(false, true);
         cont.fireEvent("selectionchange");
       }
+
       saveSceneTimer = setTimeout(function() {
+        
         if (inputType) {
           var interalTimer = setInterval(function() {
             if (!inputType) {
@@ -301,7 +306,7 @@ UE.plugins["undo"] = function() {
         }
         save(me);
       }, 200);
-
+      
       lastKeyCode = keyCode;
       keycont++;
       if (keycont >= maxInputCount) {

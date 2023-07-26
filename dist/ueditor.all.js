@@ -7659,6 +7659,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, "g");
 
     /**
          * 编辑器初始化
+         * @todo AnselK
          * @method _setup
          * @private
          * @param { Element } doc 编辑器Iframe中的文档对象
@@ -10874,11 +10875,13 @@ UE.plugins["defaultfilter"] = function() {
   //默认的过滤处理
   //进入编辑器的内容处理
   me.addInputRule(function(root) {
+    
     var allowDivTransToP = this.options.allowDivTransToP;
     var val;
     function tdParent(node) {
       while (node && node.type == "element") {
         if (node.tagName == "td") {
+          
           return true;
         }
         node = node.parentNode;
@@ -15283,6 +15286,7 @@ UE.plugins["pagebreak"] = function() {
     );
   }
   me.addInputRule(function(root) {
+   
     root.traversal(function(node) {
       if (node.type == "text" && node.data == me.options.pageBreakTag) {
         var hr = UE.uNode.createElement(

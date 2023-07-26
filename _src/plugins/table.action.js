@@ -136,7 +136,6 @@ UE.plugins["table"] = function() {
     me.addListener("keydown", function(cmd, evt) {
       var me = this;
       var keyCode = evt.keyCode || evt.which;
-
       if (keyCode == 8) {
         var ut = getUETableBySelected(me);
         if (ut && ut.selectedTds.length) {
@@ -393,6 +392,7 @@ UE.plugins["table"] = function() {
                 : 0) -
               defaultValue.tableBorder * 2 -
               (me.options.offsetWidth || 0);
+              //figure添加 @AnselK
           me.execCommand(
             "insertHTML",
             "<table  " +
@@ -538,7 +538,13 @@ UE.plugins["table"] = function() {
           toggleDraggableState(me, false, "", null);
           hideDragLine(me);
         };
+        /**
+         * @author AnselK 表格单元格点击事件入口
+         * @param {*} evt 
+         * @returns 
+         */
         table.onclick = function(evt) {
+          
           evt = me.window.event || evt;
           var target = getParentTdOrTh(evt.target || evt.srcElement);
           if (!target) return;
@@ -1347,6 +1353,7 @@ UE.plugins["table"] = function() {
       //边框上的动作处理
       borderActionHandler(evt);
     }
+    
   }
 
   //处理表格边框上的动作, 这里做延时处理，避免两种动作互相影响
@@ -1406,7 +1413,7 @@ UE.plugins["table"] = function() {
     return newObj;
   }
 
-  //边框拖动
+  //边框拖动 todo AnselK 
   function tableBorderDrag(evt) {
     isInResizeBuffer = false;
 
@@ -1496,7 +1503,7 @@ UE.plugins["table"] = function() {
       if (dragLine) {
         var dragTdPos = domUtils.getXY(dragTd),
           dragLinePos = domUtils.getXY(dragLine);
-
+        // @todo AnselK拖拽
         switch (onDrag) {
           case "h":
             changeColWidth(dragTd, dragLinePos.x - dragTdPos.x);
@@ -1629,20 +1636,24 @@ UE.plugins["table"] = function() {
     if (!cell) return 0;
     return parseInt(domUtils.getComputedStyle(cell, "width"), 10);
   }
-
+  /**
+   * @todo AnselK 拖拽改变宽度
+   * @param {*} cell 
+   * @param {*} changeValue 
+   */
   function changeColWidth(cell, changeValue) {
-    var ut = getUETable(cell);
-    if (ut) {
+    if(cell){
+      
+      var ut = getUETable(cell);
       //根据当前移动的边框获取相关的单元格
       var table = ut.table,
-        cells = getCellsByMoveBorder(cell, table);
-
+      cells = getCellsByMoveBorder(cell, table);
       table.style.width = "";
       table.removeAttribute("width");
 
       //修正改变量
       changeValue = correctChangeValue(changeValue, cell, cells);
-
+      
       if (cell.nextSibling) {
         var i = 0;
 
@@ -1656,6 +1667,7 @@ UE.plugins["table"] = function() {
           cellGroup.left.width -= -changeValue;
         });
       }
+      
     }
   }
 
@@ -1756,7 +1768,7 @@ UE.plugins["table"] = function() {
   function correctChangeValue(changeValue, relatedCell, cells) {
     //为单元格的paading预留空间
     changeValue -= getTabcellSpace();
-
+    
     if (changeValue < 0) {
       return 0;
     }
