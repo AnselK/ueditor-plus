@@ -109,7 +109,6 @@
       tr = cell && cell.parentNode,
       table = tr && domUtils.findParentByTagName(tr, ["table"]),
       caption = table && table.getElementsByTagName("caption")[0];
-
     return {
       cell: cell,
       tr: tr,
@@ -210,6 +209,7 @@
     getMaxRows: function() {
       var rows = this.table.rows,
         maxLen = 1;
+      if(!rows)return
       for (var i = 0, row; (row = rows[i]); i++) {
         var currentMax = 1;
         for (var j = 0, cj; (cj = row.cells[j++]); ) {
@@ -223,9 +223,11 @@
          * 获取当前表格的最大列数
          */
     getMaxCols: function() {
+     
       var rows = this.table.rows,
         maxLen = 0,
         cellRows = {};
+        if(!rows)return
       for (var i = 0, row; (row = rows[i]); i++) {
         var cellsNum = 0;
         for (var j = 0, cj; (cj = row.cells[j++]); ) {
@@ -412,8 +414,9 @@
       this.indexTable = [];
       var rows = this.table.rows,
         rowsNum = this.getMaxRows(),
-        dNum = rowsNum - rows.length,
+        dNum = rowsNum - rows?.length,
         colsNum = this.getMaxCols();
+      if(!rows)return
       while (dNum--) {
         this.table.insertRow(rows.length);
       }
@@ -1060,11 +1063,12 @@
         ),
         isInsertTitleCol =
           typeof sourceCell == "string" && sourceCell.toUpperCase() == "TH";
-
+      //@AnselK 子表单插入行/列bug入口      
       function replaceTdToTh(rowIndex, cell, tableRow) {
+       
         if (rowIndex == 0) {
           var th = cell.nextSibling || cell.previousSibling;
-          if (th.tagName == "TH") {
+          if (th && th.tagName == "TH") {
             th = cell.ownerDocument.createElement("th");
             th.appendChild(cell.firstChild);
             tableRow.insertBefore(th, cell);
