@@ -38,7 +38,8 @@ var dtd = (dom.dtd = (function() {
       ol: 1,
       h1: 1,
       h3: 1,
-      h2: 1
+      h2: 1,
+      figure:1 //todo AnselK 添加figure标签包裹table组件
     }),
     F = _({ ins: 1, del: 1, script: 1, style: 1 }),
     G = X(
@@ -210,7 +211,7 @@ var dtd = (dom.dtd = (function() {
       param: 1,
       source: 1,
       track: 1,
-      wbr: 1
+      wbr: 1,
     });
 
   return _({
