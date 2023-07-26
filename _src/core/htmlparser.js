@@ -1,4 +1,8 @@
 /**
+ * @AnselK
+ * 标记str转html方法 
+ */
+/**
  * html字符串转换成uNode节点
  * @file
  * @module UE
@@ -28,6 +32,14 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
   //先去掉了，加上的原因忘了，这里先记录
   //var re_tag = /<(?:(?:\/([^>]+)>)|(?:!--([\S|\s]*?)-->)|(?:([^\s\/<>]+)\s*((?:(?:"[^"]*")|(?:'[^']*')|[^"'<>])*)\/?>))/g,
   //以上的正则表达式无法匹配:<div style="text-align:center;font-family:" font-size:14px;"=""><img src="http://hs-album.oss.aliyuncs.com/static/27/78/35/image/20161206/20161206174331_41105.gif" alt="" /><br /></div>
+  /**
+   * re_tag正则说明：
+   * 1、(?:\/([^>]+)>) 用于匹配自闭合标签，捕获组中的 ([^>]+) 匹配标签名 捕获组1
+   * 2、(?:!--([\S|\s]*?)-->) 用于匹配注释，捕获组中的 ([\S|\s]*?) 匹配注释内容 捕获组2
+   * 3、(?:([^\/\s>]+)((?:\s+[\w\-:.]+(?:\s*=\s*?(?:(?:"[^"]*")|(?:'[^']*')|[^\s"'\/>]+))?)*)[\S\s]*?(\/?)>)：用于匹配开始标签和结束标签
+   * 4、([^\/\s>]+)：捕获组匹配标签名 捕获组3
+   * 5、((?:\s+[\w\-:.]+(?:\s*=\s*?(?:(?:"[^"]*")|(?:'[^']*')|[^\s"'\/>]+))?)*)：捕获组匹配标签的属性。 捕获组4
+   */
   //修改为如下正则表达式:
   var re_tag = /<(?:(?:\/([^>]+)>)|(?:!--([\S|\s]*?)-->)|(?:([^\/\s>]+)((?:\s+[\w\-:.]+(?:\s*=\s*?(?:(?:"[^"]*")|(?:'[^']*')|[^\s"'\/>]+))?)*)[\S\s]*?(\/?)>))/g,
     re_attr = /([\w\-:.]+)(?:(?:\s*=\s*(?:(?:"([^"]*)")|(?:'([^']*)')|([^\s>]+)))|(?=\s|$))/g;
@@ -121,6 +133,7 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
   function element(parent, tagName, htmlattr) {
     var needParentTag;
     if ((needParentTag = needParentNode[tagName])) {
+      
       var tmpParent = parent,
         hasParent;
       while (tmpParent.type != "root") {
@@ -129,6 +142,7 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
             ? utils.indexOf(needParentTag, tmpParent.tagName) != -1
             : needParentTag == tmpParent.tagName
         ) {
+          
           parent = tmpParent;
           hasParent = true;
           break;
@@ -136,6 +150,7 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
         tmpParent = tmpParent.parentNode;
       }
       if (!hasParent) {
+        
         parent = element(
           parent,
           utils.isArray(needParentTag) ? needParentTag[0] : needParentTag
@@ -184,6 +199,7 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
     );
   }
 
+
   var match,
     currentIndex = 0,
     nextIndex = 0;
@@ -193,26 +209,38 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
     children: []
   });
   var currentParent = root;
-
+  // debugger;
   while ((match = re_tag.exec(htmlstr))) {
     currentIndex = match.index;
     try {
-      if (currentIndex > nextIndex) {
+      // debugger;
+      //子表格无法嵌套的问题 AnselK re_tag正则匹配有些问题 步骤一match[3]!=='table'
+      if (currentIndex > nextIndex && match[3]!=='table') {
         //text node
         text(currentParent, htmlstr.slice(nextIndex, currentIndex));
       }
-      if (match[3]) {
+      if (match[3]) {  //开始标签的标签名捕获组
         if (dtd.$cdata[currentParent.tagName]) {
           text(currentParent, match[0]);
         } else {
+          const tagName = match[3].toLowerCase()
+          //设置figure标签 @AnselK
+          // if(tagName=='table' && (currentParent.tagName != 'figure' && currentParent.tagName != 'figure'.toUpperCase())){
+          //   debugger;
+          //   currentParent = element(
+          //     currentParent,
+          //     'figure',
+          //     ' style=\"margin:0;padding:0;width:100%;\"'
+          //   );
+          // }
           //start tag
           currentParent = element(
             currentParent,
-            match[3].toLowerCase(),
-            match[4]
+            tagName,
+            match[4] //开始标签的属性捕获组
           );
         }
-      } else if (match[1]) {
+      } else if (match[1]) { //自闭合标签的捕获组 -- 结束标签
         if (currentParent.type != "root") {
           if (dtd.$cdata[currentParent.tagName] && !dtd.$cdata[match[1]]) {
             text(currentParent, match[0]);
@@ -220,7 +248,7 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
             var tmpParent = currentParent;
             while (
               currentParent.type == "element" &&
-              currentParent.tagName != match[1].toLowerCase()
+              currentParent.tagName != match[1].toLowerCase() // div 'input'
             ) {
               currentParent = currentParent.parentNode;
               if (currentParent.type == "root") {
@@ -232,7 +260,7 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
             currentParent = currentParent.parentNode;
           }
         }
-      } else if (match[2]) {
+      } else if (match[2]) { //注释的捕获组
         //comment
         comment(currentParent, match[2]);
       }
@@ -245,5 +273,6 @@ var htmlparser = (UE.htmlparser = function(htmlstr, ignoreBlank) {
   if (nextIndex < htmlstr.length) {
     text(currentParent, htmlstr.slice(nextIndex));
   }
+
   return root;
 });
