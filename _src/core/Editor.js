@@ -823,6 +823,7 @@
       return root.toHtml(formatter);
     },
     /**
+     * 获取编辑器的内容的JSON树
      * @todo AnselK 
      * 具体内容同getContent 只是返回值由dom字符串变换成了uNode JSON树数据
      * @param {*} cmd 
