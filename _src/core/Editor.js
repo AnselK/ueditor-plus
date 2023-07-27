@@ -822,6 +822,31 @@
       me.fireEvent("aftergetcontent", cmd, root);
       return root.toHtml(formatter);
     },
+    /**
+     * @todo AnselK 
+     * 具体内容同getContent 只是返回值由dom字符串变换成了uNode JSON树数据
+     * @param {*} cmd 
+     * @param {*} fn 
+     * @param {*} notSetCursor 
+     * @param {*} ignoreBlank 
+     * @param {*} formatter 
+     * @returns 
+     */
+    getContentJSON: function(cmd, fn, notSetCursor, ignoreBlank, formatter) {
+      var me = this;
+      if (cmd && utils.isFunction(cmd)) {
+        fn = cmd;
+        cmd = "";
+      }
+      if (fn ? !fn() : !this.hasContents()) {
+        return "";
+      }
+      me.fireEvent("beforegetcontent");
+      var root = UE.htmlparser(me.body.innerHTML, ignoreBlank);
+      me.filterOutputRule(root);
+      me.fireEvent("aftergetcontent", cmd, root);
+      return root;
+    },
 
     /**
          * 取得完整的html代码，可以直接显示成完整的html文档
