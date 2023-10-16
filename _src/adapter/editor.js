@@ -298,6 +298,12 @@
             ) {
               dialogName = "insertvideoDialog";
             }
+            if (
+              img.className.indexOf("edui-faked-audio") != -1 ||
+              img.className.indexOf("edui-upload-audio") != -1
+            ) {
+              dialogName = "insertaudioDialog";
+            }
             if (img.getAttribute("anchorname")) {
               dialogName = "anchorDialog";
               html = popup.formatHtml(
@@ -849,7 +855,7 @@
     editor.options.editor = editor;
     utils.loadFile(document, {
       href:
-        editor.options.themePath + editor.options.theme + "/_css/ueditor.css?20230719",
+        editor.options.themePath + editor.options.theme + "/_css/ueditor.css?20230921",
       tag: "link",
       type: "text/css",
       rel: "stylesheet"
